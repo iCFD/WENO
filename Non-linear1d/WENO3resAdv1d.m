@@ -107,5 +107,5 @@ w1p = alpha1p./alphasump;
 % Numerical Flux at cell boundary, $u_{i-1/2}^{+}$;
 hp = w0p.*p0p + w1p.*p1p;
 
-% Compute finite volume residual term, df/dx.
+%% Compute finite volume residual term, df/dx.
 res = (hp-circshift(hp,[0,1])+hn-circshift(hn,[0,1]))/dx - S(w);

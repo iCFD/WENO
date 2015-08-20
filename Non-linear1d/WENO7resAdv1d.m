@@ -48,11 +48,11 @@ function res = WENO7resAdv1d(w,flux,dflux,S,dx)
 %                             i-1/2
 %
 % WENO stencil: S{i} = [ I{i-3},...,I{i+3} ]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Note: by using circshift over our domain, we are implicitly creating
 % favorable code that includes periodical boundary conditions. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Lax-Friedrichs Flux Splitting
+% Lax-Friedrichs Flux Splitting
 a=max(abs(dflux(w))); vo=0.5*(flux(w)+a*w); uo=circshift(0.5*(flux(w)-a*w),[0,-1]);
 
 %% Right Flux
@@ -145,5 +145,5 @@ w3p = alpha3p./alphasump;
 % Numerical Flux at cell boundary, $u_{i-1/2}^{+}$;
 hp = w0p.*p0p + w1p.*p1p + w2p.*p2p + w3p.*p3p;
 
-% Compute finite volume residual term, df/dx.
+%% Compute finite volume residual term, df/dx.
 res = (hp-circshift(hp,[0,1])+hn-circshift(hn,[0,1]))/dx - S(w);

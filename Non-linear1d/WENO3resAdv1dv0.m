@@ -45,7 +45,7 @@ function res = WENO3resAdv1dv0(u,flux,dflux,S,dx)
 %                             i-1/2
 %
 % WENO stencil: S{i} = [ I{i-2},...,I{i+2} ]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % based on: http://www.mathworks.com/matlabcentral/fileexchange/40956
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 N=numel(u);	i=2:(N+1);
@@ -68,5 +68,5 @@ alpha1(i) = (1/3)./(eps + (Fm(i+2)-Fm(i+1)).^2).^2;   alpha2(i) = (2/3)./(eps + 
 omega1 = alpha1./(alpha1 + alpha2);  omega2 = alpha2./(alpha1 + alpha2);
 R_minus(i) = omega1(i).*(3/2*Fm(i+1) - 1/2*Fm(i+2)) + omega2(i).*(1/2*Fm(i) + 1/2*Fm(i+1));
 
-% Compute Residual
+%% Compute Residual
 res(i-1) = (R_plus(i)+R_minus(i)-R_plus(i-1)-R_minus(i-1))/dx - S(u);
