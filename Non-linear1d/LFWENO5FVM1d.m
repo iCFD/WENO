@@ -94,8 +94,7 @@ while t < tEnd
 
     % Plot solution
     if rem(it,10) == 0
-        plot(x,u0,'-x',x,u,'.'); axis(plotrange); 
-        shg; drawnow;
+        plot(x,u0,'-x',x,u,'.'); axis(plotrange); shg; drawnow;
     end
 end
 
